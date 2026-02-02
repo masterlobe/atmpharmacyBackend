@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://atmpharmacy:6zRR4BnDwFa8k11f@cluster0.ezaag99.mo
 
 app.use(express.json())
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://atmpharmacy.com", 'https://atmpharmacy.onrender.com'],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true
 }));
