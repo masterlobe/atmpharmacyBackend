@@ -159,7 +159,7 @@ router.patch(
         genericType,
         packaging,
         genericName,
-        category: safeParse(req.body.categories),
+        category: safeParse(req.body.category),
         composition: safeParse(req.body.composition),
         uses: safeParse(req.body.uses),
         highlights: safeParse(req.body.highlights)
