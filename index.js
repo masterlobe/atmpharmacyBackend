@@ -14,9 +14,8 @@ mongoose.connect('mongodb+srv://atmpharmacy:6zRR4BnDwFa8k11f@cluster0.ezaag99.mo
 
 app.use(express.json())
 app.use(cors({
-  origin: ["http://localhost:3000", "https://atmpharmacy.com", 'https://atmpharmacy.onrender.com'],
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  credentials: true
 }));
 
 app.use('/product', Product)
@@ -29,8 +28,8 @@ app.get('/', (req, res) => {
   console.log('Root endpoint was hit')
 })
 
+const PORT = process.env.PORT || 5500;
 
-
-app.listen(5500, () => {
-  console.log('Server running on port 5500')
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
