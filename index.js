@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require('express')
 const mongoose = require('mongoose')
-const Product = require('./routes/Product')
-const Mail = require('./routes/Mail')
+const Product = require('./Routes/Product')
+const Mail = require('./Routes/Mail')
 const cors = require("cors");
 
 
