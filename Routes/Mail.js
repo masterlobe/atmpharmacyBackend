@@ -1,17 +1,11 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // app password
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async ({ subject, text }) => {
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: "atmpharmacytech@gmail.com",
+  return resend.emails.send({
+    from: "ATM Pharmacy <onboarding@resend.dev>",
+    to: ["atmpharmacytech@gmail.com"],
     subject,
     text,
   });
