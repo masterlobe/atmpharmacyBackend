@@ -22,6 +22,7 @@ app.use('/product', Product)
 
 app.use('/mail', Mail)
 app.use('/contact', require("./Routes/contact"))
+app.use('/aayucontact', require("./Routes/aayucontact"))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

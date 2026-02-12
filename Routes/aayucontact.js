@@ -13,16 +13,17 @@ router.post("/", async (req, res) => {
       });
     }
 
-    const { firstName, lastName, email, message } = req.body;
+    const { clinicName, name, email, phone, message } = req.body;
 
     // 2️⃣ Required fields check
-    if (!firstName || !email || !message) {
+    if (!name || !email || !phone || !message) {
       return res.status(400).json({
         success: false,
         error: "Missing required fields",
         details: {
-          firstName: !!firstName,
+          name: !!name,
           email: !!email,
+          phone: !!phone,
           message: !!message
         }
       });
@@ -38,13 +39,13 @@ router.post("/", async (req, res) => {
     }
 
     // 4️⃣ Environment variable check
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!process.env.EMAIL_USER1 || !process.env.EMAIL_PASS1) {
       return res.status(500).json({
         success: false,
         error: "Email service not configured properly",
         missing: {
-          EMAIL_USER: !!process.env.EMAIL_USER,
-          EMAIL_PASS: !!process.env.EMAIL_PASS
+          EMAIL_USER: !!process.env.EMAIL_USER1,
+          EMAIL_PASS: !!process.env.EMAIL_PASS1
         }
       });
     }
@@ -55,8 +56,10 @@ router.post("/", async (req, res) => {
       text: `
 New Contact Enquiry
 
-Name: ${firstName} ${lastName || ""}
+Name: ${name}
+Clinic/Business: ${clinicName || "Not provided"}
 Email: ${email}
+Phone: ${phone}
 
 Message:
 ${message}
